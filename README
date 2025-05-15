@@ -12,7 +12,7 @@ A simple Node.js + TypeScript + Express + MongoDB backend that loads users, post
    cd backend
    ```
 
-2. **Install dependencies**
+2. **Install dependencies for node modules**
    ```sh
    npm install
    ```
