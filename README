@@ -1,0 +1,104 @@
+# Backend Assignment
+
+A simple Node.js + TypeScript + Express + MongoDB backend that loads users, posts, and comments from JSONPlaceholder and provides basic REST APIs.
+
+
+
+## Installation
+
+1. **Clone the repository** (if needed)
+   ```sh
+   git clone <your-repo-url>
+   cd backend
+   ```
+
+2. **Install dependencies**
+   ```sh
+   npm install
+   ```
+
+---
+
+## Configuration
+
+- By default, the app connects to MongoDB at `mongodb://localhost:27017` and uses the database `assignmentDB`.
+- You can change these in `index.ts` if needed.
+
+---
+
+## Running the Server
+
+Start MongoDB if it’s not already running:
+```sh
+mongod
+```
+
+Run the backend server:
+```sh
+npx ts-node index.ts
+```
+Or, if you have a script in `package.json`:
+```sh
+npm run dev
+```
+
+The server will start on [http://localhost:3001](http://localhost:3001).
+
+---
+
+## API Endpoints
+
+- **Load Data:**  
+  `GET /load`  
+  Loads users, posts, and comments from JSONPlaceholder into MongoDB.
+
+- **Delete all Users:**  
+  `DELETE /users`
+
+- **Delete user by ID:**  
+  `DELETE /users/:userId`
+
+- **Get user by ID:**  
+  `GET /users/:userId`
+
+- **Add new User:**  
+  `PUT /users`  
+  (Send user JSON in the request body)
+
+---
+
+## Example Requests
+
+**Load Data**
+```sh
+curl -X GET http://localhost:3001/load
+```
+
+**Get User by ID**
+```sh
+curl -X GET http://localhost:3001/users/1
+```
+
+**Delete All Users**
+```sh
+curl -X DELETE http://localhost:3001/users
+```
+
+**Delete User by ID**
+```sh
+curl -X DELETE http://localhost:3001/users/1
+```
+
+**Add New User**
+```sh
+curl -X PUT http://localhost:3001/users -H "Content-Type: application/json" -d '{"id":11,"name":"Test User","username":"testuser","email":"test@example.com","address":{},"phone":"123","website":"test.com","company":{},"posts":[]}'
+```
+
+---
+
+## Notes
+
+- Make sure MongoDB is running before starting the backend.
+- If you get errors about `node-fetch` or ESM, ensure you are using the dynamic import as shown in `index.ts`.
+
+---
